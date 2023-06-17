@@ -2,6 +2,12 @@
 
 Chroniton is a tool for verifying constant-time behavior of cryptographic software. Instead of using leakage models, Chroniton directly verifies software with respect to a hardware implementation at the RTL level.
 
+```console
+$ racket picorv32-ed25519.rkt
+...
+verified! execution finishes in 4046295 cycles
+```
+
 For more details on Chroniton, see the [paper]() or slides ([.key](https://anish.io/files/chroniton:plarch23-slides.key), [.pdf](https://anish.io/files/chroniton:plarch23-slides.pdf)).
 
 ## Organization
@@ -60,6 +66,23 @@ If you want to install the dependencies locally, here is what you need:
 - [Racket](https://racket-lang.org/)
 - [Rosette](https://github.com/emina/rosette)
 - [Knox](https://github.com/anishathalye/knox)
+
+## Artifacts
+
+For easy reproducibility, we have [published the
+outputs/binaries](https://github.com/anishathalye/chroniton/releases/download/v1.0.0/chroniton-artifacts.tar.gz)
+produced by the synthesis tool (`.rkt` file) and the compiler (`.mem`, `.elf`,
+and `.lst` files). If you use a different Yosys or GCC version, you might see
+different results. We used the following versions of the tools (which are
+included in the Docker image):
+
+```console
+$ riscv64-linux-gnu-gcc --version
+riscv64-linux-gnu-gcc (Ubuntu 11.3.0-1ubuntu1~22.04.1) 11.3.0
+
+$ yosys --version
+Yosys 0.29 (git sha1 9c5a60eb2, clang 14.0.0-1ubuntu1 -fPIC -Os)
+```
 
 ## Citation
 
