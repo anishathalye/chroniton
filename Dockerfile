@@ -74,6 +74,8 @@ RUN cd /root/opentitan/hw/ip/otbn/util/ \
     && patch otbn_as.py otbn_as.py.patch \
     && patch otbn_ld.py otbn_ld.py.patch
 
+RUN rm -rf /root/opentitan/.git
+
 FROM base
 
 RUN wget https://download.racket-lang.org/installers/8.9/racket-8.9-x86_64-linux-cs.sh \
