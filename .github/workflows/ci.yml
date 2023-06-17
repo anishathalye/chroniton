@@ -1,0 +1,47 @@
+name: CI
+on:
+  push:
+  pull_request:
+  schedule:
+  - cron: '0 8 * * 6'
+jobs:
+  verify:
+    name: Build and verify
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build Docker image
+        run: docker build . -t anishathalye/chroniton
+      - name: Build
+        run: |
+          docker run --rm -v "${PWD}/:/chroniton" -w "/chroniton/examples" anishathalye/chroniton /bin/bash -c "
+            make
+            make hardware/picorv32/picorv32.rkt
+            make hardware/biriscv/biriscv.rkt
+            make hardware/otbn/otbn.rkt
+          "
+      - name: Verify picorv32-mul64
+        run: |
+          docker run --rm -v "${PWD}/:/chroniton" -w "/chroniton/examples" anishathalye/chroniton /bin/bash -c "
+            racket picorv32-mul64.rkt
+          "
+      - name: Verify picorv32-branch-padding
+        run: |
+          docker run --rm -v "${PWD}/:/chroniton" -w "/chroniton/examples" anishathalye/chroniton /bin/bash -c "
+            racket picorv32-branch-padding.rkt
+          "
+      - name: Verify biriscv-mul64
+        run: |
+          docker run --rm -v "${PWD}/:/chroniton" -w "/chroniton/examples" anishathalye/chroniton /bin/bash -c "
+            racket biriscv-mul64.rkt
+          "
+      - name: Verify biriscv-branch-padding (fails)
+        run: |
+          docker run --rm -v "${PWD}/:/chroniton" -w "/chroniton/examples" anishathalye/chroniton /bin/bash -c "
+            ! racket biriscv-branch-padding.rkt
+          "
+      - name: Verify otbn-wadd
+        run: |
+          docker run --rm -v "${PWD}/:/chroniton" -w "/chroniton/examples" anishathalye/chroniton /bin/bash -c "
+            racket otbn-wadd.rkt
+          "

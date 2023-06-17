@@ -32,14 +32,17 @@ RUN apt-get update \
     libboost-thread1.74-dev \
     libeigen3-dev \
     libftdi-dev \
+    patch \
     pkg-config \
-    python3.10-dev
+    python3.10-dev \
+    unzip
 
 FROM build-deps AS build-yosys
 
 RUN git clone -b yosys-0.29 https://github.com/YosysHQ/yosys.git \
     && cd yosys \
     && echo >>Makefile.conf "ENABLE_TCL := 0" \
+    && echo >>Makefile.conf "ENABLE_ABC := 0" \
     && echo >>Makefile.conf "ENABLE_GLOB := 0" \
     && echo >>Makefile.conf "ENABLE_PLUGINS := 0" \
     && echo >>Makefile.conf "ENABLE_READLINE := 0" \
@@ -48,20 +51,13 @@ RUN git clone -b yosys-0.29 https://github.com/YosysHQ/yosys.git \
     && make -j$(nproc) \
     && make install
 
-FROM base AS get-sv2v
-
-RUN apt-get update \
-    && apt-get install unzip
+FROM build-deps AS get-sv2v
 
 RUN cd /root \
     && wget -q "https://github.com/zachjs/sv2v/releases/download/v0.0.10/sv2v-Linux.zip" \
     && unzip sv2v-Linux.zip
 
 FROM build-deps AS build-otbn-toolchain
-
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-    patch
 
 RUN cd /root/ \
     && git clone -n https://github.com/lowRISC/opentitan.git \
