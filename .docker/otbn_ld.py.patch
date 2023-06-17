@@ -1,0 +1,11 @@
+--- otbn_ld.py
++++ otbn_ld.py
+@@ -66,7 +66,7 @@
+     # more than one section with the same VMA. Since we have a Harvard
+     # architecture where data and instructions both start at zero, we expect
+     # that to happen.
+-    cmd = [ld_name, '--no-check-sections']
++    cmd = [ld_name, '--no-check-sections', '-melf32lriscv']
+     if ld_script is not None:
+         cmd.append('--script={}'.format(ld_script))
+     cmd += args

@@ -1,0 +1,12 @@
+MAKEFLAGS += -r
+MAKEFLAGS += -R
+
+%.rkt: %.smt2
+	echo '#lang yosys' > $@
+	cat $< >> $@
+
+CLEAN_FILES :=
+
+.PHONY: clean
+clean:
+	rm -f *.rkt *.smt2 $(CLEAN_FILES)

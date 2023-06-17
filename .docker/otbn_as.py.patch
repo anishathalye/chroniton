@@ -1,0 +1,10 @@
+--- otbn_as.py
++++ otbn_as.py
+@@ -1176,6 +1176,7 @@
+         # OTBN isn't a standard RISC-V architecture, disable .riscv.attributes.
+         '-mno-arch-attr',
+         # OTBN is based on RV32I without any hard float support.
++        '-march=rv32i',
+         '-mabi=ilp32',
+     ]
+ 
