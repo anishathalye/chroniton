@@ -8,7 +8,7 @@ $ racket picorv32-ed25519.rkt
 verified! execution finishes in 4046295 cycles
 ```
 
-For more details on Chroniton, see the [paper]() or slides ([.key](https://anish.io/files/chroniton:plarch23-slides.key), [.pdf](https://anish.io/files/chroniton:plarch23-slides.pdf)).
+For more details on Chroniton, see the [paper](https://pdos.csail.mit.edu/papers/chroniton:plarch23.pdf) or slides ([.key](https://anish.io/files/chroniton:plarch23-slides.key), [.pdf](https://anish.io/files/chroniton:plarch23-slides.pdf)).
 
 ## Organization
 
