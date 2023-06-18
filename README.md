@@ -36,19 +36,15 @@ Located in `examples/software/`.
 
 ## Usage
 
-To build hardware implementations, run `make` in the corresponding directory to synthesize Racket code from the Verilog. For performance, you should compile the Racket code ahead of time with `raco make {name}.rkt`. This can take up to 1 minute (for `otbn.rkt`). To build software, run `make` in the corresponding directory to produce memory images.
+To build hardware implementations, run `make` in the corresponding directory to synthesize Racket code from the Verilog. For performance, you should compile the Racket code ahead of time with `raco make {name}.rkt`. This can take up to 1 minute (for `otbn.rkt`). To build software, run `make` in the corresponding directory to produce memory images. You can also run `make` in the `examples/` directory to build all hardware and software.
 
 The `examples/` directory contains the top-level Chroniton invocation, including the "hints", the untrusted proof input Chroniton uses to improve performance, for all the examples. The naming convention is `{hardware name}-{software name}.rkt`, so e.g., to run the `mul64` example on the `biriscv`, run `racket biriscv-mul64.rkt`.
 
 ## Docker image
 
-We provide a [Docker
-image](https://hub.docker.com/repository/docker/anishathalye/chroniton) that
-includes all the dependencies. You can download it with `docker pull
-anishathalye/chroniton`.
+We provide a [Docker image](https://hub.docker.com/repository/docker/anishathalye/chroniton) that includes all the dependencies. You can download it with `docker pull anishathalye/chroniton`.
 
-To mount the repository on `/chroniton` and get a shell in the Docker image,
-run:
+To mount the repository on `/chroniton` and get a shell in the Docker image, run:
 
 ```bash
 docker run -it --rm -v "${PWD}/:/chroniton" -w /chroniton anishathalye/chroniton
@@ -69,12 +65,7 @@ If you want to install the dependencies locally, here is what you need:
 
 ## Artifacts
 
-For easy reproducibility, we have [published the
-outputs/binaries](https://github.com/anishathalye/chroniton/releases/download/v1.0.0/chroniton-artifacts.tar.gz)
-produced by the synthesis tool (`.rkt` file) and the compiler (`.mem`, `.elf`,
-and `.lst` files). If you use a different Yosys or GCC version, you might see
-different results. We used the following versions of the tools (which are
-included in the Docker image):
+For easy reproducibility, we have [published the outputs/binaries](https://github.com/anishathalye/chroniton/releases/download/v1.0.0/chroniton-artifacts.tar.gz) produced by the synthesis tool (`.rkt` file) and the compiler (`.mem`, `.elf`, and `.lst` files). If you use a different Yosys or GCC version, you might see different results. We used the following versions of the tools (which are included in the Docker image):
 
 ```console
 $ riscv64-linux-gnu-gcc --version
