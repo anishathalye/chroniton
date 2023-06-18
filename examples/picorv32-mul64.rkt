@@ -1,7 +1,7 @@
 #lang rosette/safe
 
 (require
- "picorv32.rkt"
+ "common/picorv32.rkt"
  chroniton)
 
 (define state (initialize "software/mul64/picorv32.mem"))

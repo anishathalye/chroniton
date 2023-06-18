@@ -1,7 +1,7 @@
 #lang rosette/safe
 
 (require
- "biriscv.rkt"
+ "common/biriscv.rkt"
  rosutil
  chroniton (prefix-in hint: chroniton/hint)
  (only-in racket/string string-contains?)

@@ -1,7 +1,7 @@
 #lang rosette/safe
 
 (require
- "picorv32.rkt"
+ "common/picorv32.rkt"
  rosutil chroniton racket/match
  (prefix-in hint: chroniton/hint)
  (only-in rosette/base/core/polymorphic ite))

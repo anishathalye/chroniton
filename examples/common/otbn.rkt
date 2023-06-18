@@ -3,11 +3,11 @@
 (require
  (prefix-in @ (combine-in rosette/safe rosutil))
  "common.rkt"
- "hardware/otbn/otbn.rkt"
+ "../hardware/otbn/otbn.rkt"
  (only-in racket/base build-list))
 
 (provide initialize done?
-         (all-from-out "hardware/otbn/otbn.rkt"))
+         (all-from-out "../hardware/otbn/otbn.rkt"))
 
 (define (initialize software-base)
   ;; this circuit has some constants (like Verilog initial statements that initialize ROMs)

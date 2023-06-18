@@ -1,7 +1,7 @@
 #lang rosette/safe
 
 (require
- "biriscv.rkt"
+ "common/biriscv.rkt"
  chroniton)
 
 (define state (initialize "software/mul64/biriscv.mem"))

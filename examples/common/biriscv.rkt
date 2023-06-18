@@ -3,20 +3,20 @@
 (require
  (prefix-in @ (combine-in rosette/safe rosutil))
  "common.rkt"
- "hardware/picorv32/picorv32.rkt")
+ "../hardware/biriscv/biriscv.rkt")
 
 (provide initialize done?
-         (all-from-out "hardware/picorv32/picorv32.rkt"))
+         (all-from-out "../hardware/biriscv/biriscv.rkt"))
 
 (define (initialize software-path)
   ;; all state is symbolic, except the ROM
-  (define initial-state (load-software (new-symbolic-hsm_s) 'soc.rom.rom software-path))
+  (define initial-state (load-software (new-symbolic-biriscv_s) 'u_mem.u_rom.ram software-path))
 
   ;; CPU is reset (and will start executing the program)
   (define state
     (with-input
-      (step (with-input initial-state (input* 'resetn #f)))
-      (input* 'resetn #t)))
+      (step (with-input initial-state (input* 'rst #t)))
+      (input* 'resetn #f)))
 
   state)
 

@@ -1,7 +1,7 @@
 #lang rosette/safe
 
 (require
- "otbn.rkt"
+ "common/otbn.rkt"
  rosutil
  chroniton)
 
