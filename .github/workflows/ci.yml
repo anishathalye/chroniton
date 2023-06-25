@@ -16,9 +16,9 @@ jobs:
         run: |
           docker run --rm -v "${PWD}/:/chroniton" -w "/chroniton/examples" anishathalye/chroniton /bin/bash -c "
             make
-            make hardware/picorv32/picorv32.rkt
-            make hardware/biriscv/biriscv.rkt
-            make hardware/otbn/otbn.rkt
+            raco make hardware/picorv32/picorv32.rkt
+            raco make hardware/biriscv/biriscv.rkt
+            raco make hardware/otbn/otbn.rkt
           "
       - name: Verify picorv32-mul64
         run: |

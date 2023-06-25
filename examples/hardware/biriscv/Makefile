@@ -6,7 +6,6 @@ include ../common/Makefrag
 ALL_V := $(shell find . -name '*.v' | tr '\n' ' ')
 
 biriscv.smt2: $(ALL_V)
-	cd ../impl; \
 	yosys \
 		-p "read_verilog -defer $^" \
 		-p 'prep -flatten -top biriscv -nordff' \
