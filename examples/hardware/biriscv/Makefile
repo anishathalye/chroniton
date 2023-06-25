@@ -3,7 +3,7 @@ all: biriscv.rkt
 
 include ../common/Makefrag
 
-ALL_V := $(shell find . -name '*.v' | tr '\n' ' ')
+ALL_V := ./core/biriscv_defs.v $(shell find . -name '*.v' -a -not -name 'biriscv_defs.v' | sort | tr '\n' ' ')
 
 biriscv.smt2: $(ALL_V)
 	yosys \

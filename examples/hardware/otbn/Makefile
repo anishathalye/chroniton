@@ -3,7 +3,7 @@ all: otbn.rkt
 
 include ../common/Makefrag
 
-ALL_V := soc.v $(shell find otbn -name '*.v' -o -name '*.sv' | tr '\n' ' ')
+ALL_V := soc.v $(shell find otbn -name '*.v' -o -name '*.sv' | sort | tr '\n' ' ')
 
 CLEAN_FILES += combined.v
 

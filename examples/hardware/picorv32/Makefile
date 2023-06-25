@@ -3,7 +3,7 @@ all: picorv32.rkt
 
 include ../common/Makefrag
 
-SOC_V := $(shell find soc -name '*.v' | tr '\n' ' ')
+SOC_V := $(shell find soc -name '*.v' | sort | tr '\n' ' ')
 
 picorv32.smt2: hsm.v $(SOC_V)
 	yosys \
