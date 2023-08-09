@@ -7,7 +7,7 @@
  (only-in racket/string string-contains?)
  (only-in racket/base symbol->string))
 
-(define state (initialize "software/ed25519/biriscv.mem"))
+(define state (initialize "software/ed25519/64bit.mem"))
 
 
 (define (hints focus)

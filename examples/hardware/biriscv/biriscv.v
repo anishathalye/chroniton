@@ -47,7 +47,7 @@ u_dut
     ,.mem_i_error_i(mem_i_error_w)
     ,.mem_i_inst_i(mem_i_inst_w)
     ,.intr_i(1'b0)
-    ,.reset_vector_i(32'h00000000)
+    ,.reset_vector_i(32'h00000080)
     ,.cpu_id_i('b0)
 
     // Outputs

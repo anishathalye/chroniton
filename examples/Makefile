@@ -1,6 +1,7 @@
 .PHONY: all
 all:
 	$(MAKE) -C hardware/picorv32/
+	$(MAKE) -C hardware/ibex/
 	$(MAKE) -C hardware/biriscv/
 	$(MAKE) -C hardware/otbn/
 	$(MAKE) -C software/mul64/
@@ -12,6 +13,7 @@ all:
 .PHONY: clean
 clean:
 	$(MAKE) -C hardware/picorv32/ clean
+	$(MAKE) -C hardware/ibex/ clean
 	$(MAKE) -C hardware/biriscv/ clean
 	$(MAKE) -C hardware/otbn/ clean
 	$(MAKE) -C software/mul64/ clean

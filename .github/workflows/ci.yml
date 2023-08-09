@@ -17,6 +17,7 @@ jobs:
           docker run --rm -v "${PWD}/:/chroniton" -w "/chroniton/examples" anishathalye/chroniton /bin/bash -c "
             make
             raco make hardware/picorv32/picorv32.rkt
+            raco make hardware/ibex/ibex.rkt
             raco make hardware/biriscv/biriscv.rkt
             raco make hardware/otbn/otbn.rkt
           "
@@ -29,6 +30,16 @@ jobs:
         run: |
           docker run --rm -v "${PWD}/:/chroniton" -w "/chroniton/examples" anishathalye/chroniton /bin/bash -c "
             racket picorv32-branch-padding.rkt
+          "
+      - name: Verify ibex-mul64
+        run: |
+          docker run --rm -v "${PWD}/:/chroniton" -w "/chroniton/examples" anishathalye/chroniton /bin/bash -c "
+            racket ibex-mul64.rkt
+          "
+      - name: Verify ibex-branch-padding
+        run: |
+          docker run --rm -v "${PWD}/:/chroniton" -w "/chroniton/examples" anishathalye/chroniton /bin/bash -c "
+            racket ibex-branch-padding.rkt
           "
       - name: Verify biriscv-mul64
         run: |

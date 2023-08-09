@@ -1,7 +1,7 @@
 #lang rosette/safe
 
 (require
- "common/picorv32.rkt"
+ "common/ibex.rkt"
  rosutil
  chroniton)
 
@@ -11,6 +11,6 @@
 (define (hints focus)
   (define s (frontier-state focus))
   (define c (frontier-cycles focus))
-  (eprintf "pc: ~v cycles: ~a~n" (get-field s 'soc.cpu.reg_pc) c))
+  (eprintf "pc: ~v cycles: ~a~n" (get-field s 'soc.cpu.u_ibex_core.if_stage_i.pc_id_o) c))
 
 (verify-timing state step done? #:hints hints)

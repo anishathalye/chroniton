@@ -6,7 +6,7 @@
  (prefix-in hint: chroniton/hint)
  (only-in rosette/base/core/polymorphic ite))
 
-(define state (initialize "software/branch-padding/picorv32.mem"))
+(define state (initialize "software/branch-padding/32bit.mem"))
 
 (define (hints focus)
   (define s (frontier-state focus))

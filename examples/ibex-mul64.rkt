@@ -1,7 +1,7 @@
 #lang rosette/safe
 
 (require
- "common/picorv32.rkt"
+ "common/ibex.rkt"
  chroniton)
 
 (define state (initialize "software/mul64/32bit.mem"))

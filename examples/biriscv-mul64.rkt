@@ -4,6 +4,6 @@
  "common/biriscv.rkt"
  chroniton)
 
-(define state (initialize "software/mul64/biriscv.mem"))
+(define state (initialize "software/mul64/64bit.mem"))
 
 (verify-timing state step done?)

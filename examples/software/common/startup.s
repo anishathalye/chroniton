@@ -1,8 +1,8 @@
 .section .vectors,"ax",%progbits
 
-.global _reset
-.type _reset, %function
-_reset:
+.global reset_handler
+.type reset_handler, %function
+reset_handler:
     la sp, _stack_top
     call _init
     call main
@@ -12,7 +12,7 @@ _fell_through:
     call gpio_write
 _fell_through_loop:
     j _fell_through_loop
-.size _reset, .-_reset
+.size reset_handler, .-reset_handler
 
 .type _init, %function
 _init:
@@ -38,3 +38,9 @@ _zero_bss_loop:
 _init_done:
     ret
 .size _init, .-_init
+
+.global exc_handler
+.type exc_handler, %function
+exc_handler:
+    j exc_handler
+.size exc_handler, .-exc_handler

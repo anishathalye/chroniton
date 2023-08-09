@@ -22,7 +22,9 @@ wire [3:0] mem_wstrb;
 wire [31:0] mem_rdata;
 
 // CPU
-picorv32 cpu(
+picorv32 #(
+    .PROGADDR_RESET(32'h 0000_0080)
+) cpu (
     .clk (clk),
     .resetn (resetn),
     .mem_valid (mem_valid),

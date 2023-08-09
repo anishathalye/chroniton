@@ -1,5 +1,5 @@
 .PHONY: all
-all: picorv32.mem biriscv.mem
+all: 32bit.mem 64bit.mem
 
 include ../common/riscv.mk
 
@@ -10,8 +10,5 @@ CFLAGS += -I../common/
 main.elf: ../common/main.ld $(COMMON_O) main.o $(GCC_LIB)
 	$(LD) $(LDFLAGS) -T $^ -o $@
 
-picorv32.mem: main.bin
-	bin2coe --width 32 -i $< -o $@ --mem
-
-biriscv.mem: main.bin
-	bin2coe --width 64 -i $< -o $@ --mem
+%bit.mem: main.bin
+	bin2coe --width $(patsubst %bit.mem,%,$@) -i $< -o $@ --mem

@@ -21,6 +21,7 @@ This repository contains the Chroniton Racket library (in `chroniton/`) and a nu
 Located in `examples/hardware/`.
 
 - [**PicoRV32**](https://github.com/YosysHQ/picorv32/commit/f00a88c36eaab478b64ee27d8162e421049bcc66): a tiny RISC-V CPU. This repository also contains a simple SoC built around it.
+- [**Ibex**](https://github.com/lowRISC/ibex/commit/1eb0beafa5ed23fc0403386bf83367f7c84af669): a small production-quality 32-bit RISC-V CPU core. This repository contains a slightly modified version of the CPU (to work with our Verilog-to-Rosette pipeline, removing async resets and clock gating).
 - [**biRISC-V**](https://github.com/ultraembedded/biriscv/commit/6af9c4be5a0807d368eaad5e49af52322e31d073): a dual-issue in-order 6-stage-pipelined RISC-V CPU. This repository contains a slightly modified version of the CPU (to work with our Verilog-to-Rosette pipeline, removing async resets for example) and a modified version of the testbench to serve as a simple model of a SoC.
 - [**OpenTitan Big Number Accelerator (OTBN)**](https://github.com/lowRISC/opentitan/tree/e1d873a8f9fb349de8f312c9d7aae7b140c6615c/hw/ip/otbn): a cryptographic accelerator in the OpenTitan. This repository contains a heavily modified version of the OTBN, to make it work as a standalone device and to simplify it. Simplifications include removing memory scrambling and removing SECDED encoding.
 
@@ -29,7 +30,7 @@ Located in `examples/hardware/`.
 Located in `examples/software/`.
 
 - `mul64`: an expository example, a program that multiplies two 64-bit numbers together on a RISC-V processor.
-- `branch-padding`: a program that demonstrates branching with padding for overall constant-time behavior. The padding is tuned for the PicoRV32, so it'll verify against that, but when run on the biRISC-V, it will not have constant-time behavior (which is caught by Chroniton).
+- `branch-padding`: a program that demonstrates branching with padding for overall constant-time behavior. The padding is tuned for the PicoRV32 (and also happens to run in constant time on the Ibex), so it'll verify against that, but when run on the biRISC-V, it will not have constant-time behavior (which is caught by Chroniton).
 - [`ed25519`](https://github.com/orlp/ed25519/commit/b1f19fab4aebe607805620d25a5e42566ce46a0e): an off-the-shelf C implementation of Ed25519 signatures, along with some driver code. This runs on the RISC-V processors.
 - `wadd`: an expository example, a program that adds two 256-bit numbers together using the `bn.add` instruction on the OTBN.
 - [`x25519`](https://github.com/lowRISC/opentitan/blob/e1d873a8f9fb349de8f312c9d7aae7b140c6615c/sw/otbn/crypto/x25519.s): an off-the-shelf OTBN assembly implementation of X25519 key exchange, along with some driver code.

@@ -1,7 +1,7 @@
 MAKEFLAGS += -r
 MAKEFLAGS += -R
 
-COMMON_O := ../common/startup.o ../common/drivers.o
+COMMON_O := ../common/vectors.o ../common/startup.o ../common/drivers.o
 
 .PHONY: clean
 clean:
