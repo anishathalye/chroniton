@@ -93,10 +93,10 @@ always @(posedge clk) begin
 end
 
 // ROM
-wire instr_valid = instr_req_o && instr_addr_o[31:16] == 16'h0000;
+wire instr_valid = instr_req_o && instr_addr_o[31:24] == 8'h00;
 wire [31:0] instr_rdata;
 wire instr_ready;
-wire rom_valid = mem_valid && mem_addr[31:16] == 16'h0000;
+wire rom_valid = mem_valid && mem_addr[31:24] == 8'h00;
 wire [31:0] rom_rdata;
 wire rom_ready;
 rom #(
