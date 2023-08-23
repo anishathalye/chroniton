@@ -13,6 +13,6 @@ combined.v: $(ALL_V)
 ibex.smt2: combined.v
 	cd ../impl; \
 	yosys \
-		-p "read_verilog -defer $< $(SOC_V)" \
+		-p "read_verilog -defer $<" \
 		-p 'prep -flatten -top hsm -nordff' \
 		-p "write_smt2 -stdt $@"
