@@ -33,9 +33,9 @@ reg [7:0] gpio_out;
 always @(posedge clk) begin
     if (!resetn) begin
         gpio_out <= 8'h0;
-        gpio_rdata <= 32'h0;
+        gpio_rdata_q <= 32'h0;
     end else begin
-        gpio_rdata <= {24'h0000_00, gpio_pin_in};
+        gpio_rdata_q <= {24'h0000_00, gpio_pin_in};
         if (reg_write_sel && mem_wstrb[0]) begin
             gpio_out <= mem_wdata[7:0];
         end

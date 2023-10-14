@@ -97,7 +97,7 @@ wire [31:0] gpio_rdata_w;
 gpio #(.ADDR(32'h4000_0000))
 u_gpio
 (
-     .clk(clk)
+     .clk(clk_i)
     ,.resetn(!rst_i)
     ,.mem_valid(mem_req_w)
     ,.mem_addr(mem_d_addr_i)
