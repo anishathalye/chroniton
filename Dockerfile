@@ -3,6 +3,7 @@ FROM ubuntu:22.04 AS base
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
     gcc-riscv64-linux-gnu \
+    iverilog \
     libboost-filesystem1.74.0 \
     libboost-iostreams1.74.0 \
     libboost-program-options1.74.0 \
