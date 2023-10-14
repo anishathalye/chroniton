@@ -41,6 +41,8 @@ To build hardware implementations, run `make` in the corresponding directory to 
 
 The `examples/` directory contains the top-level Chroniton invocation, including the "hints", the untrusted proof input Chroniton uses to improve performance, for all the examples. The naming convention is `{hardware name}-{software name}.rkt`, so e.g., to run the `mul64` example on the `biriscv`, run `racket biriscv-mul64.rkt`.
 
+You can also run the examples using a standard Verilog simulator ([Icarus Verilog](https://steveicarus.github.io/iverilog/)) (on concrete inputs, of course). The naming convention for these testbenches is `{hardware name}-{software name}.v`. To run, for example, the `mul64` example on the `biriscv`, run `make biriscv_mul64.vvp` to compile the circuit, and then `vvp biriscv_mul64.vvp` to run it. The testbenches save VCDs in `{hardware name}-{software name}.vcd`.
+
 ## Docker image
 
 We provide a [Docker image](https://hub.docker.com/repository/docker/anishathalye/chroniton) that includes all the dependencies. You can download it with `docker pull anishathalye/chroniton`.
