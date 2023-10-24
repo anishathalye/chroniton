@@ -26,22 +26,22 @@ clean:
 IVERILOG := iverilog
 IVERILOG_FLAGS := -g2012 -v -DIVERILOG
 
-PICORV32_V := hardware/picorv32/*.v hardware/picorv32/soc/*.v common/picorv32_tb.v common/tb_common.v
+PICORV32_V := hardware/picorv32/*.v hardware/picorv32/soc/*.v hardware/common/picorv32_tb.v hardware/common/tb_common.v
 
 picorv32_%.vvp: picorv32_%.v $(PICORV32_V)
 	$(IVERILOG) $(IVERILOG_FLAGS) -o $@ $^
 
-IBEX_V := hardware/ibex/combined.v common/ibex_tb.v common/tb_common.v
+IBEX_V := hardware/ibex/combined.v hardware/common/ibex_tb.v hardware/common/tb_common.v
 
 ibex_%.vvp: ibex_%.v $(IBEX_V)
 	$(IVERILOG) $(IVERILOG_FLAGS) -Ihardware/ibex/soc/ibex -DSYNTHESIS -DYOSYS -o $@ $^
 
-BIRISCV_V := hardware/biriscv/*.v hardware/biriscv/core/*.v common/biriscv_tb.v common/tb_common.v
+BIRISCV_V := hardware/biriscv/*.v hardware/biriscv/core/*.v hardware/common/biriscv_tb.v hardware/common/tb_common.v
 
 biriscv_%.vvp: biriscv_%.v $(BIRISCV_V)
 	$(IVERILOG) $(IVERILOG_FLAGS) -Ihardware/biriscv/core -o $@ $^
 
-OTBN_V := hardware/otbn/combined.v common/otbn_tb.v common/tb_common.v
+OTBN_V := hardware/otbn/combined.v hardware/common/otbn_tb.v hardware/common/tb_common.v
 
 otbn_%.vvp: otbn_%.v $(OTBN_V)
 	$(IVERILOG) $(IVERILOG_FLAGS) -Ihardware/otbn/soc/otbn -DSYNTHESIS -DYOSYS -o $@ $^
