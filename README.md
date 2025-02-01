@@ -1,4 +1,4 @@
-# Chroniton [![Build Status](https://github.com/anishathalye/chroniton/workflows/CI/badge.svg)](https://github.com/anishathalye/chroniton/actions?query=workflow%3ACI)
+# Chroniton [![Build Status](https://github.com/anishathalye/chroniton/actions/workflows/ci.yml/badge.svg)](https://github.com/anishathalye/chroniton/actions/workflows/ci.yml)
 
 Chroniton is a tool for verifying constant-time behavior of cryptographic software. Instead of using leakage models, Chroniton directly verifies software with respect to a hardware implementation at the RTL level.
 
